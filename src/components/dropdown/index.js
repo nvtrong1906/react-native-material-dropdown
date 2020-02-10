@@ -16,6 +16,7 @@ import Ripple from 'react-native-material-ripple';
 import { TextField } from 'react-native-material-textfield';
 
 import DropdownItem from '../item';
+import ScrollViewWithScrollBar from './ScrollViewWithScrollBar';
 import styles from './styles';
 
 export default class Dropdown extends PureComponent {
@@ -748,7 +749,7 @@ export default class Dropdown extends PureComponent {
               style={[styles.picker, pickerStyle, pickerStyleOverrides]}
               onStartShouldSetResponder={() => true}
             >
-              <FlatList
+              <ScrollViewWithScrollBar
                 ref={this.updateScrollRef}
                 data={data}
                 style={styles.scroll}
@@ -756,6 +757,8 @@ export default class Dropdown extends PureComponent {
                 keyExtractor={this.keyExtractor}
                 scrollEnabled={visibleItemCount < itemCount}
                 contentContainerStyle={styles.scrollContainer}
+                showsVerticalScrollIndicator={true}
+                persistentScrollbar={true}
               />
             </View>
           </Animated.View>
